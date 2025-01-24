@@ -11,8 +11,9 @@ from .schemas import NewsCreate, News
 
 
 def scrape_single_page_selenium(url: str, db: SessionLocal):
-  
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     try:
         driver.get(url)
        
@@ -76,8 +77,9 @@ def scrape_single_page_selenium(url: str, db: SessionLocal):
         driver.quit()
 
 def scrape_homepage_selenium(homepage_url: str):
- 
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     news_links = []
     try:
         driver.get(homepage_url)
