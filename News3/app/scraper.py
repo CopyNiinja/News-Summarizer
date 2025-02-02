@@ -104,4 +104,4 @@ def scrape_and_store_homepage_news(homepage_url: str, db: SessionLocal):
         print(f"\nScraping news page: {title}")
         x=scrape_single_page_selenium(link, db)
         all_news.append(x)
-    return all_news
+    return "News Scrapped Successfully"
